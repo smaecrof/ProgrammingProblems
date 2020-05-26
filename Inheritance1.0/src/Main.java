@@ -8,7 +8,7 @@ public class Main {
 		System.out.println(dog.getName()); 
 		dog.eat();
 		dog.walk();
-		dog.run(); 
+		dog.run();
 		
 	}
 }
