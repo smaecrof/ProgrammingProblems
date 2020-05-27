@@ -36,6 +36,10 @@ public class ArrayChallenge1 {
 		int tempVal; 
 		int swap; 
 		
+		// element 0   150
+		// element 1   50
+		// element 2   45 
+		
 		do {
 			swap = 0; 
 			for(int i = 0; i < array.length; i++) {
@@ -48,7 +52,6 @@ public class ArrayChallenge1 {
 				}
 			}
 		}while(swap > 0); 
-		
 		return array; 
 	}
 	
