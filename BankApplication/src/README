@@ -1,0 +1,27 @@
+Banking Application
+- Created by Spencer Mae-Croft
+- Date Created; Wednesday June 3 2020
+- Date Last Modified: Wednesday June 3 2020 
+
+
+REQUIREMENTS:
+* The focus of this application is to use autoboxing and unboxing as a refresher to the concept. 
+
+
+- Bank Class 
+	- Contains an ArrayList of Branch objects 
+	- Needs to be able to add a new Branch object 
+	- Needs to be able to add a new customer to that branch with initial transaction 
+	- Needs to be able to add a transaction for an existing Customer obj. for that Branch
+	- Needs to be able to show a list of customers for a particular branch and optionally 
+	  show a list of their transactions 
+	 
+- Branch Class
+	- Contains an ArrayList of Customer Objects 
+	- Needs to be able to add a new Customer Object and initial transaction amount 
+	- Needs to be able to add new transactions for previous Customers  
+	
+- Customer Class
+ 	- Contains an ArrayList of transactions (Doubles)
+ 	- Contains an instance variable for the name of the customer 
+ 	
