@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
 
 public class Main {
 	
 	private static ArrayList<Album> albums = new ArrayList<Album>(); 
-	private static ArrayList<Song> playlist = new ArrayList<Song>(); 
+	private static ArrayList<Song> playlist = new ArrayList<Song>();
+	private static Iterator<Song> songIterator = playlist.iterator(); 
 	
 	public static void main(String[] args) {
 		
@@ -40,6 +42,7 @@ public class Main {
 		//Song albumlessSong = new Song("Error Song", 0.00); 
 		//addSongToPlaylist(albumlessSong); 
 		
+		menuOptions(); 
 	}
 	
 	public static void addSongToPlaylist(Song song) {
@@ -62,4 +65,37 @@ public class Main {
 		return false; 
 	}
 
+	
+	
+	public static void menuOptions() {
+		
+		Scanner scanner = new Scanner(System.in);
+		int usersChoice; 
+		
+		System.out.println("******** OPTIONS ********"
+				+ "\n 1: Skip Forward "
+				+ "\n 2: Skip Backwards"
+				+ "\n 3: Replay current song"
+				+ "\n 4: List the song"
+				+ "\n 5: Exit Application"
+				+ "\n Enter number: "); 
+		
+		usersChoice = scanner.nextInt(); 
+		
+		switch(usersChoice) {
+		case 1:
+			skipSongForward(); 
+			break; 
+		case 2: 
+			//skipSongBackwards(); 
+		}
+	}
+	
+	public static void skipSongForward() {
+		if(songIterator.hasNext()) {
+			System.out.println("Current Song: " + songIterator.next().getTitle()); 
+		} else {
+			System.out.println("End of playlist"); 
+		}
+	}
 }

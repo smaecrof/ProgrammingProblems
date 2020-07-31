@@ -1,0 +1,20 @@
+DESCRIPTION OF THE JAVA PROJECT:
+CREATED BY: SPENCER MAE-CROFT
+DATE CREATED: 07/30/2020
+
+
+* Creating a simple interface (ISaveable)
+* The interface allows an object to be saved to some sort of storage medium (arraylist) 
+* The type of the medium is not known to the interface (nor to the classes that implement the interface)
+* The interface will specify two methods, one to return the ArrayList of values to be saved and the 
+* other to populate the object's fields from an ArrayList (parameter)
+
+* Creating a few ample classes that implement ISaveable 
+* Override toString() for each class so that they can easily print for testing purposes 
+* In Main, write a method that takes an object that implements the interface as a parameter and "Saves" 
+* the values e.g. calls the method defined in the interface. 
+
+* Our method will simply print the values to the screen 
+* In the Main class, have a method that restores the values to a Saveable object 
+	- Calls the method from the interface for populating fields 
+	
