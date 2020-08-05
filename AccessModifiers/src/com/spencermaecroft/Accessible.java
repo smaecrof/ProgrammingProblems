@@ -14,7 +14,7 @@ package com.spencermaecroft;
 // 3) methodA()?
 //  - public and they are visible to all classes anywhere
 // 4) methodB() and methodC()?
-//  - public; All interface methods are automatically public     
+//  - public; All interface methods are automatically public
 
 
 
