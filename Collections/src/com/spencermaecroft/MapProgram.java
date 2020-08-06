@@ -34,7 +34,7 @@ public class MapProgram {
         if(languages.replace("Lisp", "This will not work", "A functional programming language with imperative features")){
             System.out.println("Lisp replaced");
         } else {
-            System.out.println("Lisp was not replaced"); 
+            System.out.println("Lisp was not replaced");
         }
         System.out.println(languages.replace("Scala", "This will not be added"));
 
