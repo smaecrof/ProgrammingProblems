@@ -15,6 +15,7 @@ public class Location {
         this.locationID = locationID;
         this.description = description;
         this.exits = new HashMap<String, Integer>();
+        exits.put("Q",0); // Each location needs to have a quit program option
     }
 
     public void addExit(String direction, int location){
