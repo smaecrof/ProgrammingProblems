@@ -25,6 +25,6 @@ public class Main {
         System.out.println("Main method called");
         SIBTest test = new SIBTest();
         test.someMethod();
-        System.out.println("Owner is " + SIBTest.owner); 
+        System.out.println("Owner is " + SIBTest.owner);
     }
 }
