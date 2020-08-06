@@ -15,7 +15,7 @@ public class Theatre {
         PRICE_ORDER = new Comparator<Seat>() {
             // There is an issue with Comparators that we create if the results of the Comparator are not
             // the same at the equal() method. If they are not the same, errors/issues can arise when using Maps
-            // and other data structures. 
+            // and other data structures.
             @Override
             public int compare(Seat seat1, Seat seat2) {
                 if (seat1.getPrice() < seat2.getPrice()) {
