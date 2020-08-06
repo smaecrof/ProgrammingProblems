@@ -9,10 +9,14 @@ import java.util.Scanner;
  */
 public class Main {
     private static Map<Integer, Location> locations = new HashMap<Integer,Location>();
+    private static Map<String, String> directionalWords = new HashMap<String,String>();
+    private static Scanner scanner = new Scanner(System.in);
+    private static Map<String,Integer> exits = new HashMap<String,Integer>();
+    private static String[] userInput;
+    private static String currentDirectionString;
+    private static int location = 1;
+
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-
         locations.put(0, new Location(0,"You are still in front of a computer learning java"));
         locations.put(1, new Location(1,"You are standing at the end of a road before a small brick building"));
         locations.put(2, new Location(2, "You are at the top of a hill"));
@@ -35,37 +39,82 @@ public class Main {
         locations.get(5).addExit("S",1);
         locations.get(5).addExit("W",2);
 
+        // Adding words for directional Mapping
+        directionalWords.put("NORTH","N");
+        directionalWords.put("EAST","E");
+        directionalWords.put("SOUTH","S");
+        directionalWords.put("WEST","W");
+        directionalWords.put("QUIT", "Q");
 
-
-        int loc = 1;
-        while(true){
-            System.out.println(locations.get(loc).getDescription());
-            if(loc == 0){
-                break;
-            }
-
-            Map<String,Integer> exits = locations.get(loc).getExits();
-            System.out.print("Available exits are ");
-            for(String exit: exits.keySet()){
-                System.out.print(exit + ", ");
-            }
-            System.out.println();
-
-            String direction = scanner.nextLine().toUpperCase();
-
-            if(exits.containsKey(direction)){
-                loc = exits.get(direction);
-            } else {
-                System.out.println("You cannot go in that direction");
-            }
-
-            if(!locations.containsKey(loc)){
-                System.out.println("You cannot go in that direction");
-            }
-        }
-
+        startAdventure();
     }
 
+    public static void startAdventure(){
+        while(true){
+            setAndPrintCurrentDirectionString();
+            if(location == 0){
+                return;
+            }
+            printLocationExits();
+            formatUserInput();
+            currentDirectionString = processUserInput(userInput);
+            setLocation();
+        }
+    }
+
+    public static void formatUserInput(){
+        userInput = scanner.nextLine().toUpperCase().split(" ");
+    }
+
+    public static String processUserInput(String[] userInput){
+        //Single letter processing
+        if(userInput.length == 1 && userInput[0].length() == 1){
+            return userInput[0];
+        }
+
+        // Multiple word processing
+        for(String word: userInput){
+            if(directionalWords.containsKey(word)){
+                return directionalWords.get(word);
+            }
+        }
+        return null;
+    }
+
+    public static void setAndPrintCurrentDirectionString(){
+        currentDirectionString = locations.get(location).getDescription();
+        System.out.println(currentDirectionString);
+    }
+
+    public static void setLocation(){
+        if(exits.containsKey(currentDirectionString)){
+            location = exits.get(currentDirectionString);
+        } else {
+            System.out.println("You cannot go in that direction");
+        }
+
+        if(!locations.containsKey(location)){
+            System.out.println("You cannot go in that direction");
+        }
+    }
+
+    public static void printLocationExits(){
+        exits = locations.get(location).getExits();
+        System.out.print("Available exits are ");
+        for(String exit: exits.keySet()){
+            System.out.print(exit + ", ");
+        }
+        System.out.println("\nEnter a move below: ");
+    }
+
+    // NOT IMPLEMENTED (SHOULD NOT BE IMPLEMENTED)
+    // It would be super cool if instead of simply printing out the map keys and values, This function actually
+    // created a character map on the screen such as:
+    //      -----------------               ---------------------
+    //      |               |               |                   |
+    //      |     HOME      | ------------->|      Factory      |
+    //      |               |               |                   |
+    //      -----------------               ---------------------
     public static void printMap(Map<String, Integer> map){
        for(Map.Entry<String,Integer> entry: map.entrySet()){
            System.out.println("Direction " + entry.getKey() + ", Location " + entry.getValue());
