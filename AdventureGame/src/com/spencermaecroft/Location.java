@@ -12,15 +12,15 @@ public final class Location {
     private final Map<String, Integer> exits;
 
     public Location(int locationID, String description, Map<String,Integer> exits){
-        this.locationID = locationID;
-        this.description = description;
-        this.exits = new HashMap<>(exits);
-        exits.put("Q",0); // Each location needs to have a quit program option
+            this.locationID = locationID;
+            this.description = description;
+            if(exits != null) {
+                this.exits = new HashMap<>(exits);
+            } else {
+                this.exits = new HashMap<String, Integer>();
+            }
+            this.exits.put("Q", 0); // Each location needs to have a quit program option
     }
-
-//    public void addExit(String direction, int location){
-//        exits.put(direction,location);
-//    }
 
     public int getLocationID(){
         return this.locationID;

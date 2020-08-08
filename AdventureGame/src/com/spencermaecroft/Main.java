@@ -42,6 +42,9 @@ public class Main {
     }
 
     public static void createLocationExits(){
+        // Possible runtime failure
+        locations.put(-1, new Location(-1, "Possible Run-Time failure", null));
+
         // Location 0
         locations.put(0, new Location(0,"You are still in front of a computer learning java", tempExit));
 
