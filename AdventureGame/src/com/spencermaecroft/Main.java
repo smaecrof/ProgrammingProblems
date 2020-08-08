@@ -12,51 +12,24 @@ public class Main {
     private static Map<String, String> directionalWords = new HashMap<String,String>();
     private static Scanner scanner = new Scanner(System.in);
     private static Map<String,Integer> exits = new HashMap<String,Integer>();
+    private static Map<String,Integer> tempExit = new HashMap<String,Integer>();
     private static String[] userInput;
     private static String currentDirectionString;
     private static int location = 1;
 
     public static void main(String[] args) {
-        locations.put(0, new Location(0,"You are still in front of a computer learning java"));
-        locations.put(1, new Location(1,"You are standing at the end of a road before a small brick building"));
-        locations.put(2, new Location(2, "You are at the top of a hill"));
-        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring"));
-        locations.put(4, new Location(4, "You are in a valley beside a stream"));
-        locations.put(5, new Location(5, "You are in the forest"));
-
-        Map<String, Integer> tempExit = new HashMap<String, Integer>();
-        tempExit.put("W", 2);
-
-        tempExit.put("E",3);
-        tempExit.put("S",4);
-        tempExit.put("N",5);
-
-        tempExit = new HashMap<String, Integer>();
-        tempExit.put("N",5);
-
-        tempExit = new HashMap<String, Integer>();
-        tempExit.put("W",1);
-
-        tempExit = new HashMap<String, Integer>();
-        tempExit.put("N", 1);
-        tempExit.put("W",2);
-
-        tempExit = new HashMap<String, Integer>();
-        tempExit.put("S",1);
-        tempExit.put("W",2);
-
-        // Adding words for directional Mapping
-        directionalWords.put("NORTH","N");
-        directionalWords.put("EAST","E");
-        directionalWords.put("SOUTH","S");
-        directionalWords.put("WEST","W");
-        directionalWords.put("QUIT", "Q");
-
         startAdventure();
     }
 
+    // The reason I figured to keep this startAdventure() method at all instead of simply including its code in the main
+    // and deleting this method was the idea that maybe I will need to include processes before the start of the adventure
+    // game that precede this method call. That could be graphic loading, database connection,
+    // This method might even be split up into a pre-start game method and another method to handle all actions once the
+    // user has started to interact with the game (Questions for thought)
     public static void startAdventure(){
         while(true){
+            createLocationExits();
+            createDirectionalMappings();
             setAndPrintCurrentDirectionString();
             if(location == 0){
                 return;
@@ -66,6 +39,50 @@ public class Main {
             currentDirectionString = processUserInput(userInput);
             setLocation();
         }
+    }
+
+    public static void createLocationExits(){
+        // Location 0
+        locations.put(0, new Location(0,"You are still in front of a computer learning java", tempExit));
+
+        // Location 1
+        tempExit.put("W", 2);
+        tempExit.put("E",3);
+        tempExit.put("S",4);
+        tempExit.put("N",5);
+        locations.put(1, new Location(1,"You are standing at the end of a road before a small brick building",tempExit));
+
+        // Location 2
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("N",5);
+        locations.put(2, new Location(2, "You are at the top of a hill",tempExit));
+
+        // Location 3
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("W",1);
+        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring",tempExit));
+
+        // Location 4
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("N", 1);
+        tempExit.put("W",2);
+        locations.put(4, new Location(4, "You are in a valley beside a stream",tempExit));
+
+        // Location 5
+        tempExit = new HashMap<String, Integer>();
+        tempExit.put("S",1);
+        tempExit.put("W",2);
+        locations.put(5, new Location(5, "You are in the forest",tempExit));
+    }
+
+    public static void createDirectionalMappings(){
+        // Adding words for directional Mapping
+        // One could easily add directions such as North-East, North-West, degree of change, etc
+        directionalWords.put("NORTH","N");
+        directionalWords.put("EAST","E");
+        directionalWords.put("SOUTH","S");
+        directionalWords.put("WEST","W");
+        directionalWords.put("QUIT", "Q");
     }
 
     public static void formatUserInput(){
