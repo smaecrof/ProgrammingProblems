@@ -11,7 +11,7 @@ public class Main {
 
         int[] returnNums = twoSum(nums, target);
         for(int i:returnNums){
-            System.out.print(i + ", "); 
+            System.out.print(i + ", ");
         }
     }
 
