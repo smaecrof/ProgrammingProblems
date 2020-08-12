@@ -6,18 +6,33 @@ import java.util.Set;
 /**
  * Created by SMC on 08/09/2020
  */
-public final class HeavenlyBody {
+public class HeavenlyBody {
     private final String name;
     private final double orbitalPeriod;
     private final Set<HeavenlyBody> satellites;
+    private final BodyTypes bodyType;
 
-    public HeavenlyBody(String name, double orbitPeriod){
+    public enum BodyTypes {
+        STAR,
+        PLANET,
+        DWARF_PLANET,
+        MOON,
+        COMET,
+        ASTROID
+    }
+
+    public HeavenlyBody(String name, double orbitPeriod, BodyTypes bodyTypes){
         this.name = name;
         this.orbitalPeriod = orbitPeriod;
         this.satellites = new HashSet<HeavenlyBody>();
+        this.bodyType = bodyTypes;
     }
 
-    public boolean addMoon(HeavenlyBody moon){
+    public BodyTypes getBodyType(){
+        return bodyType;
+    }
+
+    public boolean addSatellite(HeavenlyBody moon){
         return this.satellites.add(moon);
     }
 
