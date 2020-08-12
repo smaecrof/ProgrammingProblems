@@ -14,7 +14,7 @@ public class MyHashSet {
 
     public void add(int key) {
         if(!this.contains(key)){
-            if(this.index >= mySet.length -1){
+            if(this.index >= mySet.length -5){
                 increaseSetSize();
             }
             //System.out.println("Adding " + key + " at index: " + index);
@@ -24,7 +24,8 @@ public class MyHashSet {
     }
 
     public void increaseSetSize(){
-        int[] largerSet = new int[mySet.length * 2];
+        int newSize = mySet.length + 10;
+        int[] largerSet = new int[newSize];
 
         for(int i = 0; i < mySet.length; i++){
             largerSet[i] = mySet[i];
@@ -32,17 +33,24 @@ public class MyHashSet {
         mySet = largerSet;
     }
 
+    /**
+     * This operation is costly as I build a new int[] array and then start
+     * initializing it before I even know if the set contains the
+     *
+     */
     public void remove(int key) {
-        int[] copySet = new int[mySet.length-1];
-        for(int i = 0, k = 0; i < index; i++){
-            if(mySet[i] == key){
-                index = index -1;
-                continue;
+        int[] copySet;
+        if(this.contains(key)) {
+            copySet = new int[mySet.length];
+            for (int i = 0, k = 0; i <= index; i++) {
+                if (mySet[i] == key) {
+                    index = index - 1;
+                    continue;
+                }
+                copySet[k++] = mySet[i];
             }
-
-            copySet[k++] = mySet[i];
+            mySet = copySet;
         }
-        mySet = copySet;
     }
 
     /** Returns true if this set contains the specified element */
@@ -53,6 +61,14 @@ public class MyHashSet {
             }
         }
         return false;
+    }
+
+    public int[] getCleanSet(){
+        int[] cleanSet = new int[this.index];
+        for(int i = 0, k = 0; i < index; i++){
+            cleanSet[k++] = mySet[i];
+        }
+        return cleanSet;
     }
 
     public void printSet(){
