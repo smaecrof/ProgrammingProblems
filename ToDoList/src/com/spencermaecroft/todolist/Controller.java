@@ -1,19 +1,19 @@
 package com.spencermaecroft.todolist;
 
+import dataModel.TodoData;
 import dataModel.TodoItem;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextArea;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 
-import java.time.LocalDate;
-import java.time.Month;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by SMC on 08/16/2020
@@ -30,25 +30,10 @@ public class Controller {
     @FXML
     private Label deadlineLabel;
 
+    @FXML
+    private BorderPane mainBorderPane;
+
     public void initialize(){
-        TodoItem item1 = new TodoItem("Exercise", "Lift shoulders and biceps",
-                LocalDate.of(2020, Month.AUGUST,16));
-        TodoItem item2 = new TodoItem("Program", "Study the Java Programming Language",
-                LocalDate.of(2020, Month.AUGUST,16));
-        TodoItem item3 = new TodoItem("Make a healthy lunch", "Make some chicken and rice",
-                LocalDate.of(2020, Month.SEPTEMBER,20));
-        TodoItem item4 = new TodoItem("Program", "Work on some leetcode problems for some alg. practice",
-                LocalDate.of(2020, Month.AUGUST,16));
-        TodoItem item5 = new TodoItem("Go for a run", "Go for a run in the Portage Running trails",
-                LocalDate.of(2020, Month.AUGUST,16));
-
-        todoItems = new ArrayList<TodoItem>();
-        todoItems.add(item1);
-        todoItems.add(item2);
-        todoItems.add(item3);
-        todoItems.add(item4);
-        todoItems.add(item5);
-
         todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
             @Override
             public void changed(ObservableValue<? extends TodoItem> observable, TodoItem oldItem, TodoItem newValue) {
@@ -61,9 +46,37 @@ public class Controller {
             }
         });
 
-        todoListView.getItems().setAll(todoItems);
+        todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
+    }
+
+    @FXML
+    public void showNewItemDialog(){
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("todoItemDialog.fxml"));
+        try{
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        } catch (IOException e){
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
+        }
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            DialogController controller = fxmlLoader.getController();
+            controller.processResults();
+            System.out.println("Okay Pressed");
+        } else {
+            System.out.println("Cancel Pressed");
+        }
     }
 
     @FXML

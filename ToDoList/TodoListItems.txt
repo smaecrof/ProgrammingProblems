@@ -1,0 +1,7 @@
+Exercise	Lift shoulders and biceps	16-08-2020
+Program	Study the Java Programming Language	16-08-2020
+Make a healthy lunch	Make some chicken and rice	20-09-2020
+Program	Work on some leetcode problems for some alg. practice.	16-08-2020
+Go for a run	Go for a run in the Portage Running trails	16-08-2020
+Make a healthy lunch	Make some chicken and rice	20-09-2020
+Hi	Hello	30-07-2020
