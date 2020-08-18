@@ -9,6 +9,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
@@ -92,6 +94,7 @@ public class Controller {
                         }
                     }
                 };
+
                 cell.emptyProperty().addListener(
                         (obs, wasEmpty, isNowEmpty) -> {
                             if(isNowEmpty){
@@ -99,8 +102,7 @@ public class Controller {
                             } else {
                                 cell.setContextMenu(listContextMenu);
                             }
-                        }
-                );
+                });
 
                 return cell;
             }
@@ -138,6 +140,17 @@ public class Controller {
     }
 
     @FXML
+    public void handleKeyPressed(KeyEvent keyEvent){
+        TodoItem selectedItem = todoListView.getSelectionModel().getSelectedItem();
+
+        if(selectedItem != null){
+            if(keyEvent.getCode().equals(KeyCode.DELETE) || keyEvent.getCode().equals(KeyCode.BACK_SPACE)){
+                deleteItem(selectedItem);
+            }
+        }
+    }
+
+    @FXML
     public void handleClickListView(){
         TodoItem item = todoListView.getSelectionModel().getSelectedItem();
         itemDetailsTextArea.setText(item.getDetails());
@@ -152,6 +165,7 @@ public class Controller {
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK){
+            System.out.println("Item: " + item.getShortDescription() + " Deleted");
             TodoData.getInstance().deleteTodoItem(item);
         }
     }
