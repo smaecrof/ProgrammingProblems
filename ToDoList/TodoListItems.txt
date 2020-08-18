@@ -5,3 +5,7 @@ Program	Work on some leetcode problems for some alg. practice.	16-08-2020
 Go for a run	Go for a run in the Portage Running trails	16-08-2020
 Make a healthy lunch	Make some chicken and rice	20-09-2020
 Hi	Hello	30-07-2020
+Hello	dfd	29-07-2020
+Make Pasta	Making pasta with chicken tonight for dinner!.	17-08-2020
+Lift Legs	This is a test	13-08-2020
+Hello	dkfj	07-08-2020
