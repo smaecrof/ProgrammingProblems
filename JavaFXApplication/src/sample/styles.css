@@ -1,6 +1,12 @@
 
+#gridpane{
+       -fx-background-color: #2A0033;
+}
 
-#blueBTN {
-    -fx-background-color: blue;
+.button {
+    -fx-background-color: #2A0033;
+    -fx-background-insets: 0;
+    -fx-border-color: white;
+    -fx-border-radius: 20;
     -fx-text-fill: white;
 }
