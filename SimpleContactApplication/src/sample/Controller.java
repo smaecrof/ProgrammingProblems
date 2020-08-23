@@ -1,6 +1,7 @@
 package sample;
 
 import contactData.Contact;
+import contactData.ContactData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,16 +26,15 @@ public class Controller {
         Contact spencer = new Contact("Spencer", "Mae-Croft", "5749333833", "MFCEO");
         Contact elise = new Contact("Elise", "Patrick", "5749333543", "Doctor");
 
-        contactList = new ArrayList<Contact>();
-        contactList.add(spencer);
-        contactList.add(elise);
+        ContactData.getInstance().addContact(spencer);
+        ContactData.getInstance().addContact(elise);
 
-        ObservableList<Contact> contactModels = FXCollections.observableArrayList(contactList);
+
 
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         phoneNumberCol.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         notesCol.setCellValueFactory(new PropertyValueFactory<>("contactNotes"));
-        tableView.setItems(contactModels);
+        tableView.setItems(ContactData.getInstance().getContacts());
     }
 }

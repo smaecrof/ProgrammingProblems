@@ -4,7 +4,7 @@ public class Contact {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String contactNotes;
+    public String contactNotes;
 
     public Contact(String firstName, String lastName, String phoneNumber, String contactNotes) {
         this.firstName = firstName;
