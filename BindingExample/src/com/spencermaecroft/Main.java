@@ -37,7 +37,7 @@ public class Main {
         System.out.println("set1: " + set1);
         System.out.println("set2: " + set2);
         System.out.println("Union Set: " + unionSet);
-        System.out.println("Intersection set: " + interSet); 
+        System.out.println("Intersection set: " + interSet);
 
 
     }
