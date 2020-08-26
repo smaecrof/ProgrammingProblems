@@ -15,5 +15,10 @@ public class Main {
             System.out.println(ic.getAge());
             System.out.println(sc.getAge());
 
+            ic.setSalary(35343);
+
+            sc.setSalary(nc.getSalary());
+            System.out.println(sc.getSalary());
+
     }
 }
