@@ -19,7 +19,7 @@ public class PlusOne {
 
     public static int[] plusOne(int[] digits){
         int swaps = 1;
-        int lastItemIndex = digits.length -1;
+        int lastItemIndex = (digits.length -1);
 
         // Increment last digit
         digits[lastItemIndex] += 1;
@@ -44,7 +44,7 @@ public class PlusOne {
                         newDigits[j] = digits[j];
                     }
                     digits = newDigits;
-                    lastItemIndex = digits.length -1;
+                    //lastItemIndex = digits.length -1;
                 }
             }
 
