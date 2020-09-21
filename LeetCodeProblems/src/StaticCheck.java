@@ -1,5 +1,6 @@
 public class StaticCheck {
     static private int FIVE = 5;
+    private int four = 4;
 
     static public int getFive(){
         return FIVE;
