@@ -97,7 +97,7 @@ public class ContactData {
             }
         }
         catch (FileNotFoundException e){
-            e.printStackTrace();
+            System.out.println("FileNotFoundException");
         }
         catch (XMLStreamException e){
             e.printStackTrace();
@@ -184,7 +184,7 @@ public class ContactData {
         // Create end node
         EndElement endElement = eventFactory.createEndElement("", "", name);
         eventWriter.add(endElement);
-        eventWriter.add(end); 
+        eventWriter.add(end);
 
     }
 }
