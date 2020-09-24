@@ -53,7 +53,17 @@ public class Controller {
         Optional<ButtonType> result = dialog.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK){
+            ContactController contactController = fxmlLoader.getController();
+            Contact newContact = contactController.getNewContact();
+            data.addContact(newContact);
 
+            /* ***** RESOURCE HEAVY ******8
+            - Below we are saving the entire list of contacts every single time a single contact
+            is added to our data.
+            - Try to implement this differently so that only new data is added maybe to a buffer
+            which is then periodically added to main storage...
+             */
+            data.saveContacts();
         }
     }
 }
