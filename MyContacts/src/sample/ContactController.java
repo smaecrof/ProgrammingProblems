@@ -27,6 +27,9 @@ public class ContactController {
         String phoneNumber = phoneNumberField.getText();
         String notes = notesField.getText();
 
+        if(notesField.getLength() == 0){
+            notes = " ";
+        }
         /* **** ADD INPUT VALIDATION HERE *****
         - Check that input is valid
         - (Optional) only allow "OK" button to work if the input is valid

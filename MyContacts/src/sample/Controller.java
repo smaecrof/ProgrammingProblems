@@ -72,11 +72,8 @@ public class Controller {
     public void showEditContactDialog(){
         Contact selectedContact = contactsTable.getSelectionModel().getSelectedItem();
         if(selectedContact == null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No Contact selected");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select the contact you want to edit");
-            alert.showAndWait();
+            createInformationAlert("No Contact selected",
+                    "Please select the contact you want to edit");
             return;
         }
 
@@ -90,11 +87,6 @@ public class Controller {
             dialog.getDialogPane().setContent((fxmlLoader.load()));
         } catch (IOException e){
             System.out.println("Couldn't load the dialog");
-            return;
-        }
-        catch(IllegalStateException e){
-            System.out.println("IllegalStateException ");
-            e.printStackTrace();
             return;
         }
 
@@ -116,14 +108,12 @@ public class Controller {
         Contact selectedContact = contactsTable.getSelectionModel().getSelectedItem();
 
         if(selectedContact == null){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("No contact selected");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select the contact you want to edit");
-            alert.showAndWait();
+            createInformationAlert("No contact selected",
+                    "Please select the contact you want to edit");
             return;
         }
 
+        // If this gets used again, create a new private method
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirm Contact Deletion");
         alert.setHeaderText(null);
@@ -137,6 +127,15 @@ public class Controller {
             data.deleteContact(selectedContact);
             data.saveContacts();
         }
+        return;
+    }
+
+    private void createInformationAlert(String title, String contentText){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(contentText);
+        alert.showAndWait();
         return;
     }
 }
