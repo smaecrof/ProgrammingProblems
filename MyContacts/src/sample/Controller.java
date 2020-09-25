@@ -32,6 +32,11 @@ public class Controller {
         contactsTable.setItems(data.getContacts());
     }
 
+    /**
+     * - All methods here should be tested for such actions such as
+     *    * Adding a new contact with missing required information
+     *    * Editing a card with missing information
+     */
     @FXML
     public void showAddContactDialog(){
         Dialog<ButtonType> dialog = new Dialog<ButtonType>();
@@ -62,10 +67,11 @@ public class Controller {
             ContactController contactController = fxmlLoader.getController();
             Contact newContact = contactController.getNewContact();
 
-            if(newContact == null){
+            // Handles the case where required data is not inputted into the dialog FXML
+            while(newContact == null){
                 createInformationAlert("Blank Entries", "Please Fill in blank entries");
                 result = dialog.showAndWait();
-                handleAddContactResult(result, fxmlLoader, dialog);
+                newContact = contactController.getNewContact();
             }
 
             if(result.get() == ButtonType.CANCEL){
