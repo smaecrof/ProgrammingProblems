@@ -51,10 +51,14 @@ public class ContactController {
         notesField.setText(contact.getNotes());
     }
 
-    public void updateContact(Contact contact){
-        contact.setFirstName(firstNameField.getText());
-        contact.setLastName(lastNameField.getText());
-        contact.setPhoneNumber(phoneNumberField.getText());
-        contact.setNotes(notesField.getText().strip());
+    public boolean updateContact(Contact contact){
+        if(hasRequiredFields()){
+            contact.setFirstName(firstNameField.getText());
+            contact.setLastName(lastNameField.getText());
+            contact.setPhoneNumber(phoneNumberField.getText());
+            contact.setNotes(notesField.getText().strip());
+            return true;
+        }
+        return false;
     }
 }

@@ -115,10 +115,25 @@ public class Controller {
 
         ContactController contactController = fxmlLoader.getController();
         contactController.editContact(selectedContact);
-
         Optional<ButtonType> result = dialog.showAndWait();
-        if(result.isPresent() && result.get() == ButtonType.OK){
-            contactController.updateContact(selectedContact);
+
+        handleEditResult(result, fxmlLoader, dialog, selectedContact);
+    }
+
+    private void handleEditResult(Optional<ButtonType> result, FXMLLoader fxmlLoader,
+                                  Dialog<ButtonType> dialog, Contact selectedContact) {
+
+        ContactController contactController = fxmlLoader.getController(); 
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Returns false if required fields are empty (true if everything worked)
+            boolean updateResult = contactController.updateContact(selectedContact);
+
+            while (updateResult == false) {
+                createInformationAlert("Empty Fields", "Please fill in all required fields");
+                contactController.editContact(selectedContact);
+                result = dialog.showAndWait();
+                updateResult = contactController.updateContact(selectedContact);
+            }
             data.saveContacts();
         }
     }
