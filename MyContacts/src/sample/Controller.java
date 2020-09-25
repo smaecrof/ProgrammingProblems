@@ -110,4 +110,33 @@ public class Controller {
             data.saveContacts();
         }
     }
+
+    @FXML
+    public void showDeleteAlert(){
+        Contact selectedContact = contactsTable.getSelectionModel().getSelectedItem();
+
+        if(selectedContact == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No contact selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select the contact you want to edit");
+            alert.showAndWait();
+            return;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Contact Deletion");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to delete " +
+                            selectedContact.getFirstName() +
+                            " from your contacts?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            data.deleteContact(selectedContact);
+            data.saveContacts();
+        }
+        return;
+    }
 }
