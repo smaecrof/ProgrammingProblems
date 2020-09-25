@@ -53,11 +53,25 @@ public class Controller {
 
         Optional<ButtonType> result = dialog.showAndWait();
 
+        handleAddContactResult(result, fxmlLoader, dialog);
+    }
+
+    private void handleAddContactResult(Optional<ButtonType> result, FXMLLoader fxmlLoader, Dialog<ButtonType> dialog){
+
         if(result.isPresent() && result.get() == ButtonType.OK){
             ContactController contactController = fxmlLoader.getController();
             Contact newContact = contactController.getNewContact();
-            data.addContact(newContact);
 
+            if(newContact == null){
+                createInformationAlert("Blank Entries", "Please Fill in blank entries");
+                result = dialog.showAndWait();
+                handleAddContactResult(result, fxmlLoader, dialog);
+            }
+
+            if(result.get() == ButtonType.CANCEL){
+                return;
+            }
+            data.addContact(newContact);
             /* ***** RESOURCE HEAVY ******8
             - Below we are saving the entire list of contacts every single time a single contact
             is added to our data.

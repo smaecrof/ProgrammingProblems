@@ -27,17 +27,21 @@ public class ContactController {
         String phoneNumber = phoneNumberField.getText();
         String notes = notesField.getText();
 
-        if(notesField.getLength() == 0){
-            notes = " ";
-        }
-        /* **** ADD INPUT VALIDATION HERE *****
-        - Check that input is valid
-        - (Optional) only allow "OK" button to work if the input is valid
-        - Also maybe the "Notes" textfield should be made optional
-        */
+        if (hasRequiredFields()){
+            // Makes "notes" field optional
+            if(notesField.getLength() == 0){
+                notes = " ";
+            }
 
-        Contact newContact = new Contact(firstName,lastName,phoneNumber,notes);
-        return newContact;
+            Contact newContact = new Contact(firstName,lastName,phoneNumber,notes);
+            return newContact;
+        }
+        return null;
+    }
+
+    private boolean hasRequiredFields(){
+        return (firstNameField.getLength() > 0 && lastNameField.getLength() > 0 &&
+            phoneNumberField.getLength() > 0);
     }
 
     public void editContact(Contact contact){
@@ -51,6 +55,6 @@ public class ContactController {
         contact.setFirstName(firstNameField.getText());
         contact.setLastName(lastNameField.getText());
         contact.setPhoneNumber(phoneNumberField.getText());
-        contact.setNotes(notesField.getText());
+        contact.setNotes(notesField.getText().strip());
     }
 }
