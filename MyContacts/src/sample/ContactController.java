@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import sample.datamodel.Contact;
 
@@ -20,6 +21,9 @@ public class ContactController {
 
     @FXML
     private TextField notesField;
+
+    @FXML
+    private Label warningLabel;
 
     public Contact getNewContact(){
         String firstName = firstNameField.getText();
@@ -42,6 +46,14 @@ public class ContactController {
     private boolean hasRequiredFields(){
         return (firstNameField.getLength() > 0 && lastNameField.getLength() > 0 &&
             phoneNumberField.getLength() > 0);
+    }
+
+    public void setWarningLabelVisibleTrue(){
+        warningLabel.setVisible(true);
+    }
+
+    public void setWarningLabelVisibleFalse(){
+        warningLabel.setVisible(false);
     }
 
     public void editContact(Contact contact){

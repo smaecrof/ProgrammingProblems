@@ -66,14 +66,18 @@ public class Controller {
 
             // Handles the case where required data is not inputted into the dialog FXML
             while(newContact == null){
-                createInformationAlert("Blank Entries", "Please Fill in blank entries");
+                //createInformationAlert("Blank Entries", "Please Fill in blank entries");
+                contactController.setWarningLabelVisibleTrue();
                 result = dialog.showAndWait();
                 newContact = contactController.getNewContact();
-                
+
+                if(result.get() == ButtonType.CANCEL){
+                    return;
+                }
             }
-            if(result.get() == ButtonType.CANCEL){
-                return;
-            }
+
+            contactController.setWarningLabelVisibleFalse();
+
             data.addContact(newContact);
             /* ***** RESOURCE HEAVY ******8
             - Below we are saving the entire list of contacts every single time a single contact
@@ -121,15 +125,21 @@ public class Controller {
                                   Dialog<ButtonType> dialog, Contact selectedContact) {
 
         ContactController contactController = fxmlLoader.getController();
+
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // Returns false if required fields are empty (true if everything worked)
             boolean updateResult = contactController.updateContact(selectedContact);
 
             while (updateResult == false) {
-                createInformationAlert("Empty Fields", "Please fill in all required fields");
-                contactController.editContact(selectedContact);
+                contactController.setWarningLabelVisibleTrue();
+                //contactController.editContact(selectedContact);
+
                 result = dialog.showAndWait();
+                if(result.get() == ButtonType.CANCEL){
+                   return;
+                }
                 updateResult = contactController.updateContact(selectedContact);
+
             }
             data.saveContacts();
         }

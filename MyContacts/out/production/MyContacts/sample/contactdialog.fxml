@@ -20,6 +20,8 @@
 
             <Label text="Notes: " GridPane.rowIndex="3" GridPane.columnIndex="0"/>
             <TextField fx:id="notesField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label fx:id="warningLabel" text="Please fill in empty text fields" visible="false"
+                   GridPane.rowIndex="4" GridPane.columnIndex="0"/>
         </GridPane>
     </content>
 </DialogPane>
