@@ -2,10 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import sample.datamodel.Contact;
 import sample.datamodel.ContactData;
@@ -72,8 +69,8 @@ public class Controller {
                 createInformationAlert("Blank Entries", "Please Fill in blank entries");
                 result = dialog.showAndWait();
                 newContact = contactController.getNewContact();
+                
             }
-
             if(result.get() == ButtonType.CANCEL){
                 return;
             }
@@ -123,7 +120,7 @@ public class Controller {
     private void handleEditResult(Optional<ButtonType> result, FXMLLoader fxmlLoader,
                                   Dialog<ButtonType> dialog, Contact selectedContact) {
 
-        ContactController contactController = fxmlLoader.getController(); 
+        ContactController contactController = fxmlLoader.getController();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // Returns false if required fields are empty (true if everything worked)
             boolean updateResult = contactController.updateContact(selectedContact);
