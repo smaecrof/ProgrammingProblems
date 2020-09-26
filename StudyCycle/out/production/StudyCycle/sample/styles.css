@@ -1,3 +1,7 @@
+/*
+padding: top right bottom left (clockwise)
+*/
+
 .button {
     -fx-background-color: rgb(52,88,48);
     -fx-background-radius: 10;
