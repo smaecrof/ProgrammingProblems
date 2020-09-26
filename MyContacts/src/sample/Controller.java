@@ -76,7 +76,7 @@ public class Controller {
                 result = dialog.showAndWait();
                 newContact = contactController.getNewContact();
 
-                
+
                 if(result.get() == ButtonType.CANCEL){
                     return;
                 }
