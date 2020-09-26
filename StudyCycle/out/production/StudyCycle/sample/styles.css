@@ -3,6 +3,7 @@
     -fx-background-radius: 10;
     -fx-text-fill: white;
     -fx-font-size: 15pt;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 .button:hover {
     -fx-background-color: rgb(30, 63, 32);
@@ -15,10 +16,7 @@
 #mainStudyCycleLabel{
     -fx-text-fill: white;
     -fx-font-size: 25;
-    -fx-font-family: "Courier New";
-    -fx-padding: 30 15 25 20;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-padding: 25 15 15 45;
 }
 
-#decksBtn{
-    -fx-background-color: rgb(30, 63, 32);
-}
