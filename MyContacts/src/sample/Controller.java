@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Window;
 import sample.datamodel.Contact;
 import sample.datamodel.ContactData;
 
@@ -52,17 +53,21 @@ public class Controller {
 
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(event -> window.hide());
 
         Optional<ButtonType> result = dialog.showAndWait();
 
-        handleAddContactResult(result, fxmlLoader, dialog);
+        handleAddContactResult(result, fxmlLoader, dialog,window);
     }
 
-    private void handleAddContactResult(Optional<ButtonType> result, FXMLLoader fxmlLoader, Dialog<ButtonType> dialog){
+    private void handleAddContactResult(Optional<ButtonType> result, FXMLLoader fxmlLoader,
+                                        Dialog<ButtonType> dialog, Window window){
 
         if(result.isPresent() && result.get() == ButtonType.OK){
             ContactController contactController = fxmlLoader.getController();
             Contact newContact = contactController.getNewContact();
+
 
             // Handles the case where required data is not inputted into the dialog FXML
             while(newContact == null){
@@ -71,6 +76,7 @@ public class Controller {
                 result = dialog.showAndWait();
                 newContact = contactController.getNewContact();
 
+                
                 if(result.get() == ButtonType.CANCEL){
                     return;
                 }

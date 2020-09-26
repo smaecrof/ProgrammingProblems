@@ -1,34 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <contacts>
 <contact>
-	<first_name>Spencer Z</first_name>
-	<last_name>Mae-Croft</last_name>
-	<phone_number>583948329</phone_number>
-	<notes>First Contact!</notes>
-</contact>
-<contact>
-	<first_name>Elise </first_name>
-	<last_name>Patrick</last_name>
-	<phone_number>57493338382</phone_number>
-	<notes>This is my girlfriend</notes>
-</contact>
-<contact>
-	<first_name>Nick </first_name>
-	<last_name>Togle</last_name>
-	<phone_number>475894903848</phone_number>
-	<notes>Brother from another mother</notes>
-</contact>
-<contact>
-	<first_name>Dean </first_name>
-	<last_name>Colvin</last_name>
-	<phone_number>4893849383</phone_number>
-	<notes>Judge</notes>
-</contact>
-<contact>
-	<first_name>Laura </first_name>
-	<last_name>652355</last_name>
-	<phone_number>4948309</phone_number>
-	<notes>dkjfkldj</notes>
+	<first_name>Brett</first_name>
+	<last_name>Lauder</last_name>
+	<phone_number>48939039</phone_number>
+	<notes>dkfjdkl</notes>
 </contact>
 <contact>
 	<first_name>Cashew</first_name>
@@ -37,10 +13,34 @@
 	<notes>This is my black cat</notes>
 </contact>
 <contact>
+	<first_name>Dean </first_name>
+	<last_name>Colvin</last_name>
+	<phone_number>4893849383</phone_number>
+	<notes>Judge</notes>
+</contact>
+<contact>
 	<first_name>Drake</first_name>
 	<last_name>Morrow</last_name>
 	<phone_number>45422342233</phone_number>
 	<notes>kdjfkldjkl</notes>
+</contact>
+<contact>
+	<first_name>Elise </first_name>
+	<last_name>Patrick</last_name>
+	<phone_number>57493338382</phone_number>
+	<notes>This is my girlfriend</notes>
+</contact>
+<contact>
+	<first_name>Jack</first_name>
+	<last_name>Hollaway</last_name>
+	<phone_number>4848383</phone_number>
+	<notes>dkfjkld</notes>
+</contact>
+<contact>
+	<first_name>Laura </first_name>
+	<last_name>652355</last_name>
+	<phone_number>4948309</phone_number>
+	<notes>dkjfkldj</notes>
 </contact>
 <contact>
 	<first_name>Lisa </first_name>
@@ -49,10 +49,10 @@
 	<notes>dkfjdklj</notes>
 </contact>
 <contact>
-	<first_name>Jack</first_name>
-	<last_name>Hollaway</last_name>
-	<phone_number>4848383</phone_number>
-	<notes>dkfjkld</notes>
+	<first_name>Nick </first_name>
+	<last_name>Togle</last_name>
+	<phone_number>475894903848</phone_number>
+	<notes>Brother from another mother</notes>
 </contact>
 <contact>
 	<first_name>Paul</first_name>
@@ -67,9 +67,21 @@
 	<notes>kdjfkldj</notes>
 </contact>
 <contact>
-	<first_name>Brett</first_name>
-	<last_name>Lauder</last_name>
-	<phone_number>48939039</phone_number>
-	<notes>dkfjdkl</notes>
+	<first_name>Spencer Z</first_name>
+	<last_name>Mae-Croft</last_name>
+	<phone_number>583948329</phone_number>
+	<notes>First Contact!</notes>
+</contact>
+<contact>
+	<first_name>Zach</first_name>
+	<last_name>X</last_name>
+	<phone_number>48939389</phone_number>
+	<notes> </notes>
+</contact>
+<contact>
+	<first_name>Ruth</first_name>
+	<last_name>G. </last_name>
+	<phone_number>949483049</phone_number>
+	<notes>dklfjdkljfdkljf</notes>
 </contact>
 </contacts>
